@@ -135,7 +135,7 @@ Call log:
   175 |     await landingPage.verifyHowWorksSectionShown();
   176 |     await landingPage.verifyUseCasesSectionShown();
   177 | 
-  178 |     // await page.pause();
+  178 |     await page.pause();
   179 |   })
   180 | 
   181 | 
