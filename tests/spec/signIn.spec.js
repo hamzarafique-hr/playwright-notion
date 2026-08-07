@@ -6,7 +6,7 @@ import { getTestUser } from '../utils/testData.js';
 import { HomePage } from '../page/HomePage.js';
 
 test.describe('Sign-Up Flow', () => {
-    test.skip('SI-001: Verify navigate to login screen and observe elements', async ({ page }) => {
+    test('SI-001: Verify navigate to login screen and observe elements', async ({ page }) => {
 
         const landingPage = new LandingPage(page);
         const loginPage = new LoginPage(page);
@@ -17,7 +17,7 @@ test.describe('Sign-Up Flow', () => {
         await loginPage.verifyLoginPageLoaded();
     })
 
-    test.skip('SI-002: Verify user navigates to the signup screen from login screen', async ({ page }) => {
+    test('SI-002: Verify user navigates to the signup screen from login screen', async ({ page }) => {
         const landingPage = new LandingPage(page);
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
@@ -30,7 +30,7 @@ test.describe('Sign-Up Flow', () => {
         await loginPage.signupButton.click();
         await registrationPage.verifyRegistrationUIElements();
     });
-    test.skip('SI-003: Verify user navigates back and forth to the signup screen from login screen', async ({ page }) => {
+    test('SI-003: Verify user navigates back and forth to the signup screen from login screen', async ({ page }) => {
         const landingPage = new LandingPage(page);
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
@@ -47,7 +47,7 @@ test.describe('Sign-Up Flow', () => {
         await page.goBack();
         await landingPage.verifyLandingPageLoaded();
     });
-    test.skip('SI-004: Verify user navigates back and forth to the forgot password screen', async ({ page }) => {
+    test('SI-004: Verify user navigates back and forth to the forgot password screen', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
 
@@ -59,7 +59,7 @@ test.describe('Sign-Up Flow', () => {
         // await page.pause();
     });
 
-    test.skip('SI-005: Verify user signin with invalid email', async ({ page }) => {
+    test('SI-005: Verify user signin with invalid email', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
 
@@ -77,7 +77,7 @@ test.describe('Sign-Up Flow', () => {
         await loginPage.loginButton.click();
         await expect(loginPage.incorrectEmailError).toBeVisible();
     });
-    test.skip('SI-006: Verify user signin with incorrect password', async ({ page }) => {
+    test('SI-006: Verify user signin with incorrect password', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
 
@@ -96,7 +96,7 @@ test.describe('Sign-Up Flow', () => {
         await expect(loginPage.incorrectEmailError).toBeVisible();
     });
 
-    test.skip('SI-007: Verify user signin with Dynamic credentials', async ({ page }) => {
+    test('SI-007: Verify user signin with Dynamic credentials', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const registrationPage = new RegistrationPage(page);
         const testUser = getTestUser();

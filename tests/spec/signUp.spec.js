@@ -47,7 +47,7 @@ test.describe('Sign-Up Flow', () => {
     await registrationPage.verifyRegistrationUIElements();
   });
 
-  test.skip('SU-J002: Ensure invalid email formats are not accepted.', async ({ page }) => {
+  test('SU-J002: Ensure invalid email formats are not accepted.', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const registrationPage = new RegistrationPage(page);
 
@@ -88,7 +88,7 @@ test.describe('Sign-Up Flow', () => {
     await registrationPage.verifySignUpButtonDisabled();
   });
 
-  test.skip('SU-J003: Confirm submit is disabled until mandatory fields are valid.', async ({ page }) => {
+  test('SU-J003: Confirm submit is disabled until mandatory fields are valid.', async ({ page }) => {
     const landingPage = new LandingPage(page);
     const registrationPage = new RegistrationPage(page);
 
@@ -99,7 +99,7 @@ test.describe('Sign-Up Flow', () => {
 
   })
 
-  test.skip('SU-J004: Sign Up remains disabled when only Name is filled', async ({ page }) => {
+  test('SU-J004: Sign Up remains disabled when only Name is filled', async ({ page }) => {
     const registrationPage = new RegistrationPage(page);
 
     // Step 1: Launch the app and verify landing screen is displayed
@@ -113,7 +113,7 @@ test.describe('Sign-Up Flow', () => {
     await registrationPage.verifySignUpButtonDisabled();
   })
 
-  test.skip('SU-J005: Sign Up remains disabled when only Email is filled', async ({ page }) => {
+  test('SU-J005: Sign Up remains disabled when only Email is filled', async ({ page }) => {
     const registrationPage = new RegistrationPage(page);
 
     // Step 1: Launch the app and verify landing screen is displayed
@@ -125,7 +125,7 @@ test.describe('Sign-Up Flow', () => {
     await registrationPage.verifySignUpButtonDisabled();
   })
 
-  test.skip("SU-J006: Email validation rejects missing '@'", async ({ page }) => {
+  test("SU-J006: Email validation rejects missing '@'", async ({ page }) => {
     const registrationPage = new RegistrationPage(page);
 
     // Step 1: Launch the app and verify landing screen is displayed
@@ -140,7 +140,7 @@ test.describe('Sign-Up Flow', () => {
 
   })
 
-  test.skip("SU-J007: Real-time password indicators show all non-compliant for 'pass'", async ({ page }) => {
+  test("SU-J007: Real-time password indicators show all non-compliant for 'pass'", async ({ page }) => {
     const registrationPage = new RegistrationPage(page);
 
     await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/register/');
@@ -148,6 +148,35 @@ test.describe('Sign-Up Flow', () => {
 
     await registrationPage.passwordInput.click();
     await registrationPage.passwordInput.pressSequentially('pass', { delay: 180 });
+  });
+
+  test('SU-J008: Verify user Scroll from top to bottom' , async ({page}) => {
+    const landingPage = new LandingPage(page);
+    
+    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+
+    await landingPage.verifyLandingPageLoaded();
+    await landingPage.footer.scrollIntoViewIfNeeded({delay: 150});
+    await expect(landingPage.footer).toBeVisible();
+    await page.mouse.wheel(0, -6800);
+
+    // await page.pause();
+  });
+
+  test('SU-J009: Verify user move between the sections of landing page' , async ({page}) => {
+    const landingPage = new LandingPage(page);
+    
+    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+
+    await landingPage.verifyLandingPageLoaded();
+    await landingPage.verifyWhyVivloSectionShown();
+    await landingPage.verifyCaptureSectionShown();
+    await landingPage.verifyMeetViviSectionShown();
+    await landingPage.verifyHowWorksSectionShown();
+    await landingPage.verifyUseCasesSectionShown();
+
+    // await page.pause();
   })
+
 
 });
