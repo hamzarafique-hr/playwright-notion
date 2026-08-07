@@ -175,7 +175,7 @@ test.describe('Sign-Up Flow', () => {
     await landingPage.verifyHowWorksSectionShown();
     await landingPage.verifyUseCasesSectionShown();
 
-    // await page.pause();
+    await page.pause();
   })
 
 
