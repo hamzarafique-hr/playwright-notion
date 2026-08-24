@@ -56,23 +56,47 @@ export class RegistrationPage {
   // }
 
   async fillForm(name, email, password, confirmPassword) {
-    await this.nameInput.click();
-    await this.nameInput.pressSequentially(name, { delay: 50 });
-    await this.nameInput.press('Tab');
+    await this.nameInput.pressSequentially(name);
+    await expect(this.nameInput).toHaveValue(name);
+    await this.removeFocus();
 
-    await this.emailInput.click();
-    await this.emailInput.pressSequentially(email, { delay: 50 });
-    await this.emailInput.press('Tab');
+    await this.emailInput.pressSequentially(email);
+    await expect(this.emailInput).toHaveValue(email);
+    await this.removeFocus();
 
-    await this.passwordInput.click();
-    await this.passwordInput.pressSequentially(password, { delay: 180 });
-    await this.passwordInput.press('Tab');
+    await this.passwordInput.pressSequentially(password, { delay: 50 });
+    await expect(this.passwordInput).toHaveValue(password);
+    await this.removeFocus();
 
-    await this.confirmPasswordInput.click();
-    await this.confirmPasswordInput.pressSequentially(confirmPassword, { delay: 180 });
-    await this.confirmPasswordInput.press('Tab');
-    await this.confirmPasswordInput.blur();
+    await this.confirmPasswordInput.pressSequentially(confirmPassword, { delay: 50 });
+    await expect(this.confirmPasswordInput).toHaveValue(confirmPassword);
+    await this.removeFocus();
   }
+
+  // async fillForm(name, email, password, confirmPassword) {
+  //   await this.nameInput.click();
+  //   await this.nameInput.fill(name);
+  //   // await this.nameInput.pressSequentially(name, { delay: 50 });
+  //   // await this.nameInput.press('Tab');
+  //   await this.removeFocus();
+
+  //   await this.emailInput.click();
+  //   await this.emailInput.fill(email);
+  //   // await this.emailInput.pressSequentially(email, { delay: 50 });
+  //   // await this.emailInput.press('Tab');
+  //   await this.removeFocus();
+
+  //   await this.passwordInput.click();
+  //   await this.passwordInput.pressSequentially(password, { delay: 180 });
+  //   // await this.passwordInput.press('Tab');
+  //   await this.removeFocus();
+
+  //   await this.confirmPasswordInput.click();
+  //   await this.confirmPasswordInput.pressSequentially(confirmPassword, { delay: 180 });
+  //   // await this.confirmPasswordInput.press('Tab');
+  //   // await this.confirmPasswordInput.blur();
+  //   await this.removeFocus();
+  // }
 
   async removeFocus() {
     await this.header.click();

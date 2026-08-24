@@ -10,17 +10,17 @@ export class LandingPage {
     this.logInButton = page.getByRole('link', { name: 'Log in' });
     this.googlePlayButton = page.locator('span').filter({ hasText: 'Google Play' }).first();
     this.startLearningButton = page.getByRole('link', { name: 'Start Learning Smarter' });
-    this.footer = page.getByText('Made with ♥ by Imagination AI');
+    this.footer = page.getByText('© 2026 vivlo', { exact: true });
     this.whyVivloOption = page.getByRole('link', { name: 'Why vivlo' });
-    this.whyVivloSection = page.getByRole('heading', { name: 'Your best ideas get lostbetween a dozen apps' });
+    this.whyVivloSection = page.getByRole('heading', { name: 'Your best ideas get lost between a dozen apps' });
     this.captureOption = page.getByRole('link', { name: 'Capture' });
-    this.captureSection = page.getByRole('heading', { name: 'Capture it howeverit comes to you' });
+    this.captureSection = page.getByRole('heading', { name: 'Capture it however it comes to you' });
     this.viviOption = page.getByRole('link', { name: 'Meet vivi' });
-    this.viviSection = page.getByRole('heading', { name: 'Ask vivi anything,any time' });
+    this.viviSection = page.getByRole('heading', { name: 'Ask vivi anything, any time' });
     this.howItWorksOption = page.locator('a').filter({ hasText: 'How it works' }).first();
-    this.howItWorksSection = page.getByRole('heading', { name: 'Capture. Connect.Comprehend. Recall.' })
+    this.howItWorksSection = page.getByRole('heading', { name: 'Capture. Connect. Comprehend. Recall.' })
     this.useCasesOption = page.locator('a').filter({ hasText: 'Use cases' }).first();
-    this.useCasesSection = page.getByRole('heading', { name: 'However you learn,vivlo keeps up' });
+    this.useCasesSection = page.getByRole('heading', { name: 'However you learn, vivlo keeps up' });
     this.blogOption = page.getByRole('link', { name: 'Blog' });
     this.blogSectionHeading = page.getByRole('heading', { name: 'Blog' });
 

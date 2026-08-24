@@ -5,6 +5,12 @@ import { VerificationPage } from '../page/VerificationPage.js';
 import { generateTestUser } from '../utils/testData.js';
 
 test.describe('Sign-Up Flow', () => {
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+    console.log('Starting Sign-Up Flow Suite');
+  });
+
   test('SU-J001: Complete sign-up happy path and verify pending screen', async ({ page }) => {
     // Page Objects initialization
     const landingPage = new LandingPage(page);
@@ -14,7 +20,7 @@ test.describe('Sign-Up Flow', () => {
     const testUser = generateTestUser();
 
     // Step 1 & 2: Launch app and wait for landing screen to load
-    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+    // await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
     await landingPage.verifyLandingPageLoaded();
 
     // Step 3 & 4: Tap "Get started" button and wait for registration screen
@@ -52,7 +58,7 @@ test.describe('Sign-Up Flow', () => {
     const registrationPage = new RegistrationPage(page);
 
     // Step 1: Launch the app and verify landing screen is displayed
-    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+    // await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
     await landingPage.verifyLandingPageLoaded();
 
     // Step 2: Tap "Start Learning Smarter" button and verify Registration screen loads with disabled "Sign Up" button
@@ -150,23 +156,32 @@ test.describe('Sign-Up Flow', () => {
     await registrationPage.passwordInput.pressSequentially('pass', { delay: 180 });
   });
 
-  test('SU-J008: Verify user Scroll from top to bottom' , async ({page}) => {
+  test('SU-J008: Verify user Scroll from top to bottom', async ({ page }) => {
     const landingPage = new LandingPage(page);
-    
-    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+
+    // await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
 
     await landingPage.verifyLandingPageLoaded();
-    await landingPage.footer.scrollIntoViewIfNeeded({delay: 150});
+    await landingPage.footer.scrollIntoViewIfNeeded();
     await expect(landingPage.footer).toBeVisible();
     await page.mouse.wheel(0, -6800);
+    await page.setViewportSize({
+      width: 1536,
+      height: 791,
+    });
+
+    console.log(await page.viewportSize().height);
+    console.log(await page.viewportSize().width);
+
+    // await page.setViewportSize().width(1536);
 
     // await page.pause();
   });
 
-  test('SU-J009: Verify user move between the sections of landing page' , async ({page}) => {
+  test('SU-J009: Verify user move between the sections of landing page', async ({ page }) => {
     const landingPage = new LandingPage(page);
-    
-    await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
+
+    // await page.goto('https://synapse-web-v2-poc.quadrupleapps.com/');
 
     await landingPage.verifyLandingPageLoaded();
     await landingPage.verifyWhyVivloSectionShown();
@@ -175,7 +190,7 @@ test.describe('Sign-Up Flow', () => {
     await landingPage.verifyHowWorksSectionShown();
     await landingPage.verifyUseCasesSectionShown();
 
-    await page.pause();
+    // await page.pause();
   })
 
 
