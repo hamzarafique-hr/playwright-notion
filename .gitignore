@@ -1,12 +1,12 @@
 
 # Playwright
-node_modules/
+# node_modules/
 # /test-results/
 # /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-/tests/utils/testUser.json
-.github/
+# /tests/utils/testUser.json
+# .github/
 
 
